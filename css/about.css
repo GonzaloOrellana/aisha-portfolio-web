@@ -1,0 +1,94 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFBF9;
+}
+
+.text-accent, .text-accent-hover {
+    color: #D9AAB7;
+}
+.hover\:text-accent-hover:hover {
+    color: #D9AAB7;
+}
+
+/* --- ESTILOS DE ESCRITORIO --- */
+.profile-image-container {
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-height: 550px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.75rem;
+    border-top: 1px solid #f0e6e5;
+    padding-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.contact-btn {
+    display: inline-block;
+    background-color: #D9AAB7;
+    color: white;
+    padding: 12px 32px;
+    border-radius: 9999px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: #c799a9;
+}
+
+
+/* --- ESTILOS RESPONSIVE PARA MÓVIL --- */
+@media (max-width: 767px) {
+    .profile-image-container {
+        width: 200px;       /* Ancho fijo para el círculo */
+        height: 200px;      /* Alto fijo para el círculo */
+        border-radius: 50%; /* Esto lo hace circular */
+        margin: 0 auto;     /* Centra la imagen */
+        max-height: none;   /* Anula la altura máxima de escritorio */
+    }
+
+    .info-grid {
+        text-align: left; /* Alinea el texto de los datos a la izquierda */
+    }
+}
+
+
+/* --- ANIMACIONES Y MENÚ MÓVIL (Sin cambios) --- */
+@keyframes fade-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-nav > a { opacity: 0; animation: fade-in 0.6s ease-out forwards; }
+.animate-nav > a:nth-child(1) { animation-delay: 0.2s; }
+.animate-nav > a:nth-child(2) { animation-delay: 0.3s; }
+.animate-nav > a:nth-child(3) { animation-delay: 0.4s; }
+.animate-nav > a:nth-child(4) { animation-delay: 0.5s; }
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.animate-on-scroll.show { opacity: 1; transform: translateY(0); }
+.mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFFBF9; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease-in-out; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.mobile-menu.open { opacity: 1; pointer-events: auto; }
+.close-btn { position: absolute; top: 20px; right: 20px; font-size: 2.5rem; color: #4A4A4A; background: none; border: none; cursor: pointer; }
+.mobile-nav { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.mobile-nav a { font-size: 1.5rem; color: #4A4A4A; text-decoration: none; font-weight: 500; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease-out, transform 0.3s ease-out; }
+.mobile-menu.open .mobile-nav a { opacity: 1; transform: translateY(0); }
+.mobile-menu.open .mobile-nav a:nth-child(1) { transition-delay: 0.2s; }
+.mobile-menu.open .mobile-nav a:nth-child(2) { transition-delay: 0.3s; }
+.mobile-menu.open .mobile-nav a:nth-child(3) { transition-delay: 0.4s; }
+.mobile-menu.open .mobile-nav a:nth-child(4) { transition-delay: 0.5s; }
+.mobile-nav a.contact-btn-mobile { background-color: #D9AAB7; color: white; padding: 10px 30px; border-radius: 9999px; margin-top: 1rem; }

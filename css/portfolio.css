@@ -1,0 +1,168 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFBF9;
+}
+
+/* Estilos de navegación y título */
+.text-accent { color: #D9AAB7; }
+.hover\:text-accent-hover:hover, .text-accent-hover { color: #D9AAB7; }
+.bg-accent { background-color: #E6C7C7; }
+
+
+.portfolio-item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    position: relative;
+    height: 380px;
+    /* Transición para el efecto de elevación */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto de elevación al pasar el cursor */
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.portfolio-item img {
+    transition: transform 0.4s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 2rem 1rem 1rem;
+    transition: opacity 0.3s ease;
+    opacity: 0.8;
+}
+
+.portfolio-item:hover .title-overlay {
+    opacity: 1;
+}
+
+.title-text {
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .title-text {
+    transform: translateY(0);
+}
+
+/* --- ANIMACIONES DE SCROLL --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Estilos para los elementos cuando son visibles */
+.animate-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Retraso escalonado para los trabajos de la galería */
+#portfolio-grid .animate-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+#portfolio-grid .animate-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+#portfolio-grid .animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+#portfolio-grid .animate-on-scroll:nth-child(4) { transition-delay: 0.4s; }
+/* Puedes añadir más si tienes más trabajos */
+
+/* --- ANIMACIÓN PARA LA NAVEGACIÓN --- */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-nav > a {
+    opacity: 0;
+    animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-nav > a:nth-child(1) { animation-delay: 0.2s; }
+.animate-nav > a:nth-child(2) { animation-delay: 0.3s; }
+.animate-nav > a:nth-child(3) { animation-delay: 0.4s; }
+.animate-nav > a:nth-child(4) { animation-delay: 0.5s; }
+
+/* --- ESTILOS PARA EL MENÚ MÓVIL --- */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFBF9;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.mobile-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2.5rem;
+    color: #4A4A4A;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.mobile-nav a {
+    font-size: 1.5rem;
+    color: #4A4A4A;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.mobile-menu.open .mobile-nav a {
+    opacity: 1;
+    transform: translateY(0);
+}
+.mobile-menu.open .mobile-nav a:nth-child(1) { transition-delay: 0.2s; }
+.mobile-menu.open .mobile-nav a:nth-child(2) { transition-delay: 0.3s; }
+.mobile-menu.open .mobile-nav a:nth-child(3) { transition-delay: 0.4s; }
+.mobile-menu.open .mobile-nav a:nth-child(4) { transition-delay: 0.5s; }
+.mobile-nav a.contact-btn-mobile {
+    background-color: #D9AAB7;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 9999px;
+    margin-top: 1rem;
+}

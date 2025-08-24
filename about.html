@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí - Aisha Gago Ponce</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos -->
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body class="text-gray-800">
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="close-menu-btn" class="close-btn">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Inicio</a>
+            <a href="about.html">Sobre Mí</a>
+            <a href="portfolio.html">Portafolio</a>
+            <a href="index.html#contact" class="contact-btn-mobile">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- Encabezado de Navegación -->
+    <header class="absolute top-0 left-0 right-0 p-6 md:p-10 z-10">
+        <div class="container mx-auto flex justify-end items-center">
+            <nav class="hidden md:flex items-center space-x-8 text-sm animate-nav">
+                <a href="index.html" class="hover:text-accent-hover transition-colors">Inicio</a>
+                <a href="about.html" class="text-accent-hover transition-colors">Sobre Mí</a>
+                <a href="portfolio.html" class="hover:text-accent-hover transition-colors">Portafolio</a>
+                <a href="index.html#contact" class="bg-[#D9AAB7] text-white px-5 py-2 rounded-full font-medium hover:bg-[#c799a9] transition-colors">Contacto</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-28 md:pt-32 pb-12 md:pb-20">
+        
+        <section class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            
+            <!-- Columna de la Imagen -->
+            <div class="md:w-1/2 animate-on-scroll profile-image-container">
+                <img src="../Imagenes/Book/img22.jpg" alt="Retrato de Aisha Gago Ponce">
+            </div>
+
+            <!-- Columna del Texto -->
+            <div class="md:w-1/2 animate-on-scroll text-center md:text-left" style="transition-delay: 0.2s;">
+                <h1 class="text-4xl md:text-5xl font-bold">Sobre Mí</h1>
+                <p class="text-xl text-accent mt-2 mb-6">Modelo & Diseñadora</p>
+                
+                <p class="text-gray-600 mb-4">
+                    ¡Hola! Soy Aisha. Aquí puedes escribir un párrafo sobre su pasión por el modelaje, su experiencia, y lo que la motiva. Es un buen lugar para mostrar su personalidad.
+                </p>
+                <p class="text-gray-600 mb-8">
+                    Este es otro párrafo donde puedes detallar los tipos de trabajo que realiza (editorial, pasarela, comercial, etc.) y con qué tipo de marcas o fotógrafos le gusta colaborar.
+                </p>
+
+                <div class="info-grid mb-8">
+                    <div><strong>Nombre:</strong> Aisha Gago Ponce</div>
+                    <div><strong>Edad:</strong> 22</div>
+                    <div><strong>Email:</strong> gagoaisha@gmail.com</div>
+                    <div><strong>Ubicación:</strong> Buenos Aires, Argentina</div>
+                </div>
+
+                <a href="index.html#contact" class="contact-btn">Contáctame</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach((el) => observer.observe(el));
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.add('open'); });
+        closeMenuButton.addEventListener('click', () => { mobileMenu.classList.remove('open'); });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aisha Gago Ponce - Portfolio</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-white">
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="close-menu-btn" class="close-btn">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Inicio</a>
+            <a href="about.html">Sobre Mí</a>
+            <a href="portfolio.html">Portafolio</a>
+            <a href="index.html#contact" class="contact-btn-mobile">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- Contenedor Principal de la Página de Inicio -->
+    <main class="hero-section h-screen w-full relative overflow-hidden">
+        <!-- Capa de superposición -->
+        <div class="overlay absolute inset-0"></div>
+
+        <!-- Contenido superpuesto (Header, Texto Central, Redes Sociales) -->
+        <div class="relative h-full w-full flex flex-col justify-between p-6 md:p-10">
+            
+            <!-- 1. Encabezado (Solo Navegación) -->
+            <header class="flex justify-end items-center">
+                <nav class="hidden md:flex items-center space-x-8 text-sm animate-nav">
+                    <a href="about.html" class="hover:text-accent-hover transition-colors">Sobre Mí</a>
+                    <a href="portfolio.html" class="hover:text-accent-hover transition-colors">Portafolio</a>
+                    <a href="#contact" class="bg-[#D9AAB7] text-gray-800 px-5 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors">Contacto</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </header>
+
+            <!-- 2. Texto Central con animación -->
+            <div class="flex-grow flex items-center justify-center">
+                <div class="max-w-md text-center animate-fade-in">
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight">Aisha Gago Ponce</h1>
+                    <!-- Texto con ID para la animación de escritura -->
+                    <p class="text-xl md:text-2xl mt-4 font-light text-gray-300">
+                        <span id="typing-text" class="typing-cursor"></span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3. Redes Sociales con animación y clases responsivas -->
+            <footer class="flex justify-center md:justify-start items-end">
+                <div class="flex flex-row md:flex-col items-center space-x-4 md:space-x-0 md:space-y-4 animate-slide-up">
+                    <a href="https://www.instagram.com/aisha_gago/" class="hover:text-accent-hover transition-colors">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M16.5 7.5v.01" /></svg>
+                    </a>
+                     <a href="#" class="hover:text-accent-hover transition-colors">
+                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5" /><path d="M8 8v.01" /><path d="M12 16v-5" /><path d="M16 16v-3a2 2 0 1 0 -4 0" /><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" /></svg>
+                    </a>
+                    <a href="https://www.behance.net/aishagagoponce" class="hover:text-accent-hover transition-colors">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-behance"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5" /><path d="M3 12l4.5 0" /><path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1" /><path d="M16 6l3 0" /></svg>
+                    </a>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <script>
+        // --- Script para el menú móvil ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+
+        // --- Script para la animación de escritura ---
+        const typingTextElement = document.getElementById('typing-text');
+        const words = ["Modelo", "Diseñadora"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                // Borrando
+                typingTextElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            } else {
+                // Escribiendo
+                typingTextElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(type, 2000); // Pausa antes de borrar
+                    return;
+                }
+            }
+            setTimeout(type, isDeleting ? 100 : 150);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+             setTimeout(type, 1500); // Inicia la animación después de las otras
+        });
+    </script>
+
+</body>
+</html>

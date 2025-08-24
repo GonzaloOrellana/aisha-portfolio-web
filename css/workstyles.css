@@ -1,0 +1,177 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFBF9; /* Fondo blanco cálido */
+}
+
+/* Estilos para la navegación */
+.hover\:text-accent-hover:hover {
+    color: #D9AAB7; /* Rosa más intenso */
+}
+
+/* Estilos para la galería de fotos */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- CAMBIOS PARA LA SIMETRÍA --- */
+.gallery-item {
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Oculta las partes de la imagen que se salen */
+    height: 500px; /* Altura fija para todas las cajas de imagen */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esta es la clave: la imagen cubre el espacio sin deformarse */
+    object-position: top; /* CAMBIO: Prioriza la parte superior de la imagen */
+}
+
+/* --- NUEVOS ESTILOS PARA FOTOS HORIZONTALES --- */
+.gallery-item-full-width {
+    grid-column: 1 / -1; /* Ocupa todo el ancho de la grilla */
+    height: 400px; /* Una altura más adecuada para fotos horizontales */
+}
+
+/* Para las fotos horizontales, es mejor centrarlas en lugar de alinearlas arriba */
+.gallery-item-full-width img {
+    object-position: center top;
+}
+/* --- FIN DE LOS NUEVOS ESTILOS --- */
+
+
+
+/* Estilos para el botón de Volver Arriba */
+#back-to-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #E6C7C7;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+}
+
+#back-to-top-btn:hover {
+    background-color: #D9AAB7;
+}
+
+/* --- ESTILOS PARA EL MENÚ MÓVIL --- */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFBF9;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.mobile-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2.5rem;
+    color: #4A4A4A;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.mobile-nav a {
+    font-size: 1.5rem;
+    color: #4A4A4A;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.mobile-menu.open .mobile-nav a {
+    opacity: 1;
+    transform: translateY(0);
+}
+.mobile-menu.open .mobile-nav a:nth-child(1) { transition-delay: 0.2s; }
+.mobile-menu.open .mobile-nav a:nth-child(2) { transition-delay: 0.3s; }
+.mobile-menu.open .mobile-nav a:nth-child(3) { transition-delay: 0.4s; }
+.mobile-menu.open .mobile-nav a:nth-child(4) { transition-delay: 0.5s; }
+.mobile-nav a.contact-btn-mobile {
+    background-color: #D9AAB7;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 9999px;
+    margin-top: 1rem;
+}
+
+/* --- ANIMACIONES --- */
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-nav > a {
+    opacity: 0;
+    animation: fade-in 0.6s ease-out forwards;
+}
+.animate-nav > a:nth-child(1) { animation-delay: 0.2s; }
+.animate-nav > a:nth-child(2) { animation-delay: 0.3s; }
+.animate-nav > a:nth-child(3) { animation-delay: 0.4s; }
+.animate-nav > a:nth-child(4) { animation-delay: 0.5s; }
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-gallery .animate-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+.photo-gallery .animate-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+.photo-gallery .animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.photo-gallery .animate-on-scroll:nth-child(4) { transition-delay: 0.4s; }
+.photo-gallery .animate-on-scroll:nth-child(5) { transition-delay: 0.5s; }
+.photo-gallery .animate-on-scroll:nth-child(6) { transition-delay: 0.1s; }
+.photo-gallery .animate-on-scroll:nth-child(7) { transition-delay: 0.2s; }
+.photo-gallery .animate-on-scroll:nth-child(8) { transition-delay: 0.3s; }
+.photo-gallery .animate-on-scroll:nth-child(9) { transition-delay: 0.4s; }
+.photo-gallery .animate-on-scroll:nth-child(10) { transition-delay: 0.5s; }
+.photo-gallery .animate-on-scroll:nth-child(11) { transition-delay: 0.2s; }
+.photo-gallery .animate-on-scroll:nth-child(12) { transition-delay: 0.3s; }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Aisha Gago Ponce</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos del portafolio -->
+    <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body class="text-gray-800">
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="close-menu-btn" class="close-btn">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Inicio</a>
+            <a href="about.html">Sobre Mí</a>
+            <a href="portfolio.html">Portafolio</a>
+            <a href="index.html#contact" class="contact-btn-mobile">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- Encabezado de Navegación -->
+    <header class="absolute top-0 left-0 right-0 p-6 md:p-10 z-10">
+        <div class="container mx-auto flex justify-end items-center">
+            <nav class="hidden md:flex items-center space-x-8 text-sm animate-nav">
+                <a href="index.html" class="hover:text-accent-hover transition-colors">Inicio</a>
+                <a href="about.html" class="hover:text-accent-hover transition-colors">Sobre Mí</a>
+                <a href="portfolio.html" class="text-accent-hover transition-colors">Portafolio</a>
+                <a href="index.html#contact" class="bg-[#D9AAB7] text-white px-5 py-2 rounded-full font-medium hover:bg-gray-700 transition-colors">Contacto</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 pt-28 md:pt-32 pb-12 md:pb-20">
+        
+        <!-- Encabezado del Portafolio con animación -->
+        <div class="text-center mb-12 animate-on-scroll">
+            <p class="text-gray-400 text-sm tracking-widest uppercase">Mostrando algunos de mis mejores trabajos</p>
+            <h1 class="text-4xl md:text-5xl font-bold mt-2">Portafolio</h1>
+            <div class="w-16 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <!-- Galería de Imágenes con clases responsivas actualizadas -->
+        <div id="portfolio-grid" class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            
+            <a href="pagWorks/book.html" class="portfolio-item group animate-on-scroll">
+                <img src="Imagenes/Book/portada-book.jpg" alt="Foto de portafolio para Book">
+                <div class="title-overlay">
+                    <h3 class="title-text justify-center">Book</h3>
+                </div>
+            </a>
+            <a href="pagWorks/pysche.html" class="portfolio-item group animate-on-scroll">
+                <img src="Imagenes/Pysche.bsas/Portada Pysche.jpg" alt="Foto de portafolio para Pysche.bsas">
+                <div class="title-overlay">
+                    <h3 class="title-text">Pysche.bsas</h3>
+                </div>
+            </a>
+            <a href="pagWorks/proyectoFadu.html" class="portfolio-item group animate-on-scroll">
+                <img src="Imagenes/Pantalon-FADU/portada-panFadu.jpg" alt="Foto de portafolio para Proyecto FADU">
+                <div class="title-overlay">
+                    <h3 class="title-text">Proyecto FADU</h3>
+                </div>
+            </a>
+            <a href="pagWorks/expoPeluqueria.html" class="portfolio-item group animate-on-scroll">
+                <img src="Imagenes/expo-peluquería-Babyliss-pro/portada-expo-peluqueria.jpg" alt="Foto de portafolio para Expo Peluquería">
+                <div class="title-overlay">
+                    <h3 class="title-text">Expo Peluquería - Babyliss pro</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Script para la animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach((el) => observer.observe(el));
+
+        // Script para el menú móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+    </script>
+
+</body>
+</html>
