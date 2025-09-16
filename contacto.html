@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Aisha Gago Ponce</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos de contacto -->
+    <link rel="stylesheet" href="css/contactostyles.css">
+</head>
+<body class="text-gray-800">
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="close-menu-btn" class="close-btn">&times;</button>
+        <nav class="mobile-nav">
+            <a href="index.html">Inicio</a>
+            <a href="about.html">Sobre Mí</a>
+            <a href="portfolio.html">Portafolio</a>
+            <a href="contacto.html" class="contact-btn-mobile">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- Encabezado de Navegación -->
+    <header class="absolute top-0 left-0 right-0 p-6 md:p-10 z-10">
+        <div class="container mx-auto flex justify-end items-center">
+            <nav class="hidden md:flex items-center space-x-8 text-sm animate-nav">
+                <a href="index.html" class="hover:text-accent-hover transition-colors">Inicio</a>
+                <a href="about.html" class="hover:text-accent-hover transition-colors">Sobre Mí</a>
+                <a href="portfolio.html" class="hover:text-accent-hover transition-colors">Portafolio</a>
+                <a href="contacto.html" class="bg-[#D9AAB7] text-white px-5 py-2 rounded-full font-medium hover:bg-opacity-90 transition-colors">Contacto</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-28 md:pt-32 pb-12 md:pb-20">
+        
+        <div class="w-full max-w-lg mx-auto">
+            <!-- Encabezado del Formulario -->
+            <div class="text-center mb-12 animate-on-scroll">
+                <h1 class="text-4xl md:text-5xl font-bold">Contacto</h1>
+                <p class="text-gray-500 mt-2">Envíame un mensaje y te responderé pronto.</p>
+            </div>
+
+            <!-- Formulario de Contacto -->
+            <!-- IMPORTANTE: Reemplaza la URL en 'action' por tu endpoint de Formspree -->
+            <form id="contact-form" action="https://formspree.io/f/xblaebae" method="POST" class="space-y-6">
+                <div class="form-group animate-on-scroll">
+                    <label for="name" class="form-label">Nombre completo</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre completo" required>
+                </div>
+                <div class="form-group animate-on-scroll">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="tu@correo.com" required>
+                </div>
+                <div class="form-group animate-on-scroll">
+                    <label for="subject" class="form-label">Asunto</label>
+                    <input type="text" id="subject" name="subject" class="form-input" placeholder="Motivo del mensaje" required>
+                </div>
+                <div class="form-group animate-on-scroll">
+                    <label for="message" class="form-label">Mensaje</label>
+                    <textarea id="message" name="message" rows="5" class="form-input" placeholder="Escribe tu mensaje aquí" required></textarea>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <button type="submit" class="submit-btn">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+             <!-- Mensaje de estado del formulario -->
+            <p id="form-status" class="text-center mt-4"></p>
+        </div>
+    </main>
+
+    <script>
+        // --- Script para Animación al hacer Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach((el, index) => {
+            el.style.transitionDelay = `${index * 100}ms`;
+            observer.observe(el);
+        });
+
+        // --- Script para el Menú Móvil ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+
+        // --- SCRIPT PARA ENVIAR EL FORMULARIO ---
+        const form = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const data = new FormData(event.target);
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    formStatus.textContent = "¡Gracias por tu mensaje! Ha sido enviado.";
+                    formStatus.className = 'form-status-success';
+                    form.reset();
+                } else {
+                    const responseData = await response.json();
+                    if (Object.hasOwn(responseData, 'errors')) {
+                        formStatus.textContent = responseData["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        formStatus.textContent = "Oops! Hubo un problema al enviar tu formulario.";
+                    }
+                     formStatus.className = 'form-status-error';
+                }
+            } catch (error) {
+                formStatus.textContent = "Oops! Hubo un problema al enviar tu formulario.";
+                formStatus.className = 'form-status-error';
+            }
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
+
+</body>
+</html>
+
